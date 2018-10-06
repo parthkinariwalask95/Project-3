@@ -1,0 +1,21 @@
+{
+  "name": "project-3",
+  "version": "1.0.0",
+  "description": "\"full stack mern application - a social network\"",
+  "main": "server.js",
+  "author": "Yadhap, Parth, Yash, Andrew, Mark",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
