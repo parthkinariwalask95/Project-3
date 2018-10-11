@@ -8,4 +8,5 @@ router.use(function (req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+//need to make sure that this is right (/client/build/index.html)
 module.exports = router;
