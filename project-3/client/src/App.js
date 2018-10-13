@@ -1,29 +1,40 @@
-import React, { Component } from "react";
-import View from "./components/Main";
+// import React, { Component } from "react";
+// import View from "./components/Main";
 
-class App extends Component {
+// class App extends Component {
 
-  // state = {
-  //   show: false,
-  //   user:[]
-  //  };
-   
-  //   showModal = () => {
-  //     this.setState({ show: true });
-  //   };
-   
-  //   hideModal = () => {
-  //     this.setState({ show: false });
-  //   };
 
-  render() {
-    return (
-      <div>
-        <View />
+//   render() {
+//     return (
+//       <div>
+//         <View />
         
-      </div>
-    );
-  }
-}
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import Saved from "./pages/Saved";
+import Matches from "./pages/Matches";
+
+const App = () => (
+  <Router>
+  <div>
+    <Switch>
+      <Route exact path="/" component={Dashboard} />
+      <Route exact path="/matches" component={Matches} />
+      <Route exact path="/saved" component={Saved} />
+      <Route exact path="/profile" component={Profile} />
+
+    </Switch>
+  </div>
+</Router>
+);
 
 export default App;

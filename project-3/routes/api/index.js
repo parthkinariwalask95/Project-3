@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const articleRoutes = require("./viweapi");
+const userRoutes = require("./user");
 
-router.use("/a", articleRoutes);
+router.use("/users", userRoutes);
 
 module.exports = router;
