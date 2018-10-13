@@ -1,0 +1,65 @@
+.landing-inner {
+  padding-top: 70px;
+}
+img {
+  width: 100%;
+}
+
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-form {
+  opacity: 0.9;
+}
+
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+/* NavBar items */
+
+.navbar {
+  display: inline;
+}
+ul {
+  text-align: right !important;
+}
+/* Navbar buttons */
+.navButtons {
+  margin-right: 20px;
+  background-color: lawngreen;
+  color: black;
+}
+
+/* Landing page image styling */
+.landing {
+  position: relative;
+  background: url("./img/showcase.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -30px;
+  margin-bottom: -50px;
+}
+
+.login {
+  background: url("./img/showcase.jpg") no-repeat;
+}
+
+.loginRow {
+  /* position: absolute; */
+  /* visibility: visible; */
+  left: 490px;
+  margin-top: 200px;
+  z-index: 200;
+}

@@ -1,27 +1,27 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//Create Schema
+// Create Schema
 const UserSchema = new Schema({
   name: {
     type: String,
-    require: true
+    required: true
   },
   email: {
     type: String,
-    require: true
+    required: true
+  },
+  avatar: {
+    type: String,
+    required: true
   },
   password: {
     type: String,
-    require: true
-  },
-  avatar: {
-    type: string,
-    require: true
+    required: true
   },
   date: {
     type: Date,
-    default: Date().now
+    default: Date.now
   }
 });
 
