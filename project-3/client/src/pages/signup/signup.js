@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Formbtn, Input } from "../../components/Form";
+import { Formbtn, Input, CheckBox } from "../../components/Form";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 
@@ -10,7 +10,14 @@ class SignUp extends Component {
         email: "",
         cemail: "",
         pword: "",
-        cpword: "",
+        cpword: "", //need to update state to include second and third page state variables as well
+        image: "",
+        age: "",
+        gender: "",
+        location: "",
+        rage: "",
+        rgender: ""
+        //how to handle checkboxes
     };
 
     handleInputChange = e => {
@@ -19,6 +26,11 @@ class SignUp extends Component {
             [name]: value
         });
     };
+
+    handlePageTransition = e => {
+        e.preventDefault();
+
+    }
 
     handleFormSubmit = e => {
         e.preventDefault();
@@ -29,18 +41,19 @@ class SignUp extends Component {
                 email: this.state.email
             })
                 .catch(err => console.log(err));
-            //if no error then button click should transition to next page (questionnaire?)
+            //if no error then button click should transition to dashboard page
+            //fix validation to include all state variables?
         }
     };
 
     render() {
         return (
             <Container fluid>
-                <Row>
-                    <h1>Let's Start With Some Basic Information</h1>
-                </Row>
-                <Row></Row>
-                <form>
+                <form className="pageOne">
+                    <Row>
+                        <h1>Let's Start With Some Basic Information</h1>
+                    </Row>
+                    <Row></Row>
                     <Row>
                         <Col size="6">
                             <Input
@@ -97,8 +110,104 @@ class SignUp extends Component {
                     </Row>
                     <Row>
                         <Formbtn
-                            onClick={this.handleFormSubmit}>
+                            onClick={this.handleFormSubmit}> {/*change this onClick*/}
                             Proceed
+                        </Formbtn>
+                    </Row>
+                </form>
+                <form className="pageTwo">
+                    <Row>
+                        <h1>Upload Image</h1>
+                    </Row>
+                    <Row></Row>
+                    <Row>
+                        <Input
+                            value={this.state.image}
+                            onChange={this.handleInputChange}
+                            name="Image URL"
+                            placeholder="Image URL (required)"
+                        />
+                        <Formbtn> {/*add onclick method for uploading/proceeding*/}
+                            Upload
+                        </Formbtn>
+
+                    </Row>
+                </form>
+                <form className="pageThree">
+                    <Row>
+                        <h1>I am</h1>
+                        <Input
+                            value={this.state.age}
+                            onChange={this.handleInputChange}
+                            name="Age"
+                            placeholder="Age (required)" //this should include numeric validation
+                        />
+                        <h1>years old</h1>
+                        <Input
+                            value={this.state.gender}
+                            onChange={this.handleInputChange}
+                            name="Gender"
+                            placeholder="Gender" //this shoud be a dropdown and include male, female, and other?
+                        />
+                        <h1>looking for a roommate in</h1>
+                        <Input
+                            value={this.state.location}
+                            onChange={this.handleInputChange}
+                            name="Location"
+                            placeholder="Location (required)"
+                        />
+                        <h1>area</h1>
+                    </Row>
+                    <Row>
+                        <Row>
+                            <h2>I identify as a:</h2>
+                        </Row>
+                        <Row>
+                            <Col size="4">
+                                <CheckBox
+                                    text="Athlete"
+                                />
+                                {/* need to add a checkbox component for here */}
+                            </Col>
+                            <Col size="4">
+
+                            </Col>
+                            <Col size="4">
+
+                            </Col>
+                        </Row>
+                    </Row>
+                    <Row>
+                        <Row>
+                            <h2>I am looking for a</h2>
+                            <Input
+                                value={this.state.rage}
+                                onChange={this.handleInputChange}
+                                name="Rage"
+                                placeholder="Roomate Age (required)" //add numeric validation here
+                            />
+                            <h2>year old</h2>
+                            <Input
+                                value={this.state.rgender}
+                                onChange={this.handleInputChange}
+                                name="Rgender"
+                                placeholder="Roommate Gender (required)" //make this a dropdown
+                            />
+                        </Row>
+                        <Row>
+                            <Col size="4">
+                            </Col>
+                            <Col size="4">
+
+                            </Col>
+                            <Col size="4">
+
+                            </Col>
+                        </Row>
+                    </Row>
+                    <Row>
+                        <Formbtn onClick={this.handleFormSubmit}>
+                            Submit
                         </Formbtn>
                     </Row>
                 </form>
