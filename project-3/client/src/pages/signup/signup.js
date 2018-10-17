@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { Formbtn, Input, CheckBox } from "../../components/Form";
+import { Formbtn, Input, Checkbox } from "../../components/Form";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 
 class SignUp extends Component {
     state = {
+        pageOneHide: false,
+        pageTwoHide: true,
+        pageThreeHide: true,
         fName: "",
         lName: "",
         email: "",
@@ -20,20 +23,26 @@ class SignUp extends Component {
         //how to handle checkboxes
     };
 
-    handleInputChange = e => {
-        const { name, value } = e.target;
+    handleInputChange = event => {
+        const { name, value } = event.target;
         this.setState({
             [name]: value
         });
     };
 
-    handlePageTransition = e => {
-        e.preventDefault();
+    handlePageTransition = (event, pageNum) => {
+        event.preventDefault();
+        if (pageNum === "One") {
+            return this.setState({ pageOneHide: true, pageTwoHide: false });
+        }
 
+        if (pageNum === "Two") {
+            return this.setState({ pageTwoHide: true, pageThreeHide: false });
+        }
     }
 
-    handleFormSubmit = e => {
-        e.preventDefault();
+    handleFormSubmit = event => {
+        event.preventDefault();
         if (this.state.fName && this.state.lName && this.state.email && this.state.cemail && this.state.pword && this.state.cpword && this.state.email === this.state.cemail && this.state.pword && this.state.cpword) {
             API.signUp({
                 username: this.state.email,
@@ -110,7 +119,7 @@ class SignUp extends Component {
                     </Row>
                     <Row>
                         <Formbtn
-                            onClick={this.handleFormSubmit}> {/*change this onClick*/}
+                            onClick={this.handlePageTransition("One")}> {/*change this onClick*/}
                             Proceed
                         </Formbtn>
                     </Row>
@@ -127,7 +136,9 @@ class SignUp extends Component {
                             name="Image URL"
                             placeholder="Image URL (required)"
                         />
-                        <Formbtn> {/*add onclick method for uploading/proceeding*/}
+                        <Formbtn
+                            onClick={this.handlePageTransition("One")}
+                        > {/*add onclick method for uploading/proceeding*/}
                             Upload
                         </Formbtn>
 
@@ -164,7 +175,7 @@ class SignUp extends Component {
                         </Row>
                         <Row>
                             <Col size="4">
-                                <CheckBox
+                                <Checkbox
                                     text="Athlete"
                                 />
                                 {/* need to add a checkbox component for here */}
@@ -215,3 +226,5 @@ class SignUp extends Component {
         )
     }
 }
+
+export default SignUp;

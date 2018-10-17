@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FormBtn = props => (
+export const Formbtn = props => (
     <button {...props} className="btn btn-success">
         {props.children}
     </button>
