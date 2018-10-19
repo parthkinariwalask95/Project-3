@@ -1,4 +1,6 @@
-import react from "react";
+import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
-<Doughnut data={} />
+export const adminChart = props => (
+    <Doughnut data={props.users} />
+)
