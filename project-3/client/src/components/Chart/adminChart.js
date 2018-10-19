@@ -1,4 +1,4 @@
 import react from "react";
-import * from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 
-<Pie data={} />
+<Doughnut data={} />
