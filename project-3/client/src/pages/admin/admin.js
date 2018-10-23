@@ -6,8 +6,7 @@ import API from "../../utils/API";
 class Admin extends Component {
     state = {
         users =[],
-        chartHide = false,
-        userHide = true
+        chartHide = false
     };
 
     componentDidMount() {
@@ -22,14 +21,24 @@ class Admin extends Component {
     };
 
     showUsers = () => {
-
+        this.setState({ chartHide: true });
     }
 
     render() {
         return (
+            <div>
+                {!this.state.chartHide ? <Chart /> : <User />}
+            </div>
+        )
+    }
+}
+
+var Chart = React.createClass({
+    render() {
+        return (
             <Container fluid>
                 <Row>
-                    <h1>Good Evening Admin</h1>
+                    <h1>Hello Admin</h1>
                 </Row>
                 <Row>
                     <Col size="4"></Col>
@@ -42,7 +51,21 @@ class Admin extends Component {
                 <Row></Row>
             </Container>
         );
-    };
-};
+    }
+});
+
+var User = React.createClass({
+    render() {
+        return (
+            <Container fluid>
+                {this.state.users.map(users => {
+                    return (
+                        <div key={users.id}>{users.name}</div>
+                    )
+                })}
+            </Container>
+        )
+    }
+})
 
 export default Admin;
